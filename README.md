@@ -1,5 +1,5 @@
 
-# Feifei Li · 李菲菲
+# Feifei Li 
 
 **Data Science · AI Builder · Team Systems Thinker**
 
