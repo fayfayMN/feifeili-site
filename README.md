@@ -1,3 +1,4 @@
+
 # Feifei Li · 李菲菲
 
 **Data Science · AI Builder · Team Systems Thinker**
@@ -8,7 +9,7 @@
 
 This repository hosts my personal website — a hand-coded portfolio built from scratch, no templates, no frameworks. It's where I show the work, tell the story, and share what I've learned along the way.
 
-🌍 **Live site:** [feifeili.com](https://feifeili.com) *(or `https://feifeili-site `)*
+🌍 **Live site:** [feifeili.com](https://feifeili.com)
 
 ---
 
@@ -31,6 +32,8 @@ When intuition fails, structure carries the team. That's the lens behind everyth
 ---
 
 ## 📂 What's in This Repo
+
+```
 .
 ├── index.html          → Home
 ├── about.html          → About Me (the long version)
@@ -40,6 +43,8 @@ When intuition fails, structure carries the team. That's the lens behind everyth
 ├── styles.css          → All styling, hand-written
 ├── nav.js              → Mobile nav toggle
 └── README.md           → You're here
+```
+
 No build step. No dependencies. Just HTML, CSS, and a small dash of JavaScript.
 
 ---
@@ -52,6 +57,9 @@ A Streamlit app I designed and shipped to help student orgs and small teams form
 ### 🩺 Team Doctor
 A diagnostic Streamlit app that surfaces team-health signals — role clarity, ownership gaps, communication friction — so leaders can fix structure before it breaks people.
 
+### 🔒 Local-LLM Log Analysis
+A private, offline pipeline using Qwen2.5-14B and DeepSeek on a 12 GB GPU to parse team logs and meeting transcripts for patterns. Privacy-preserving by design.
+
 ### 🏦 Minnesota AGENT.AI — Fraud Detection (🥇 1st Place, State)
 Retail-banking fraud detection system using feature engineering and predictive scoring to identify high-risk anomalies.
 
@@ -62,12 +70,12 @@ Perfect 5.0/5.0 for Innovation & Data Integration. Identified geographic blind s
 
 ## 🧰 Tech Stack
 
-**Languages:** Python · SQL · R · Java
-**Data & ML:** Pandas · NumPy · Scikit-Learn · Computer Vision
-**AI / LLM:** Prompt Engineering · Local LLMs (Qwen2.5, DeepSeek) · Agentic Workflows
-**Visualization:** Power BI · Tableau · SAP Predictive Analytics · JMP
-**Apps & Dev:** Streamlit · Git · Docker · AWS (EC2, S3) · Jupyter
-**Languages spoken:** English · 中文 (Mandarin)
+- **Languages:** Python · SQL · R · Java
+- **Data & ML:** Pandas · NumPy · Scikit-Learn · Computer Vision
+- **AI / LLM:** Prompt Engineering · Local LLMs (Qwen2.5, DeepSeek) · Agentic Workflows
+- **Visualization:** Power BI · Tableau · SAP Predictive Analytics · JMP
+- **Apps & Dev:** Streamlit · Git · Docker · AWS (EC2, S3) · Jupyter
+- **Languages spoken:** English · 中文 (Mandarin)
 
 ---
 
@@ -98,7 +106,35 @@ If you want to clone and explore:
 
 ```bash
 git clone https://github.com/fayfayMN/feifeili-site.git
-cd feifeili-site 
+cd feifeili-site
+
 # Open index.html in your browser, or run a quick local server:
 python -m http.server 8000
+
 # Then visit http://localhost:8000
+```
+
+No installs. No build. That's the point.
+
+---
+
+## 📬 Let's Talk
+
+I'm looking for **data science, analytics, or AI roles** — especially with teams solving problems in healthcare, civic tech, small business, or education. Bonus points for bilingual or cross-cultural work.
+
+- ✉️ **Email:** [feifeili.ds@gmail.com](mailto:feifeili.ds@gmail.com)
+- 🔗 **LinkedIn:** [linkedin.com/in/feifeili-ds](https://www.linkedin.com/in/feifeili-ds/)
+- 💻 **GitHub:** [github.com/fayfayMN](https://github.com/fayfayMN)
+- 🌐 **Site:** [feifeili.com](https://feifeili.com)
+
+---
+
+## 📝 A Note on This Site
+
+Built by hand. No templates, no shortcuts.
+
+Every chapter of my path — teacher, interpreter, mail carrier, builder — taught me that **structure helps when words don't**. This site is one more small system trying to do the same thing: make the work visible, make the path clear, leave things a little better than I found them.
+
+---
+
+*Last updated: June 2026*
