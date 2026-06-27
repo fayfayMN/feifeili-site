@@ -9,7 +9,7 @@
 
 This repository hosts my personal website — a hand-coded portfolio built from scratch, no templates, no frameworks. It's where I show the work, tell the story, and share what I've learned along the way.
 
-🌍 **Live site:** [feifeili.com] [https://fayfaymn.github.io/feifeili-site/](url)
+🌍 **Live site:** [fayfaymn.github.io/feifeili-site](https://fayfaymn.github.io/feifeili-site/)
 
 ---
 
