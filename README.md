@@ -8,7 +8,7 @@
 
 This repository hosts my personal website — a hand-coded portfolio built from scratch, no templates, no frameworks. It's where I show the work, tell the story, and share what I've learned along the way.
 
-🌍 **Live site:** [feifeili.com](https://feifeili.com) *(or `https://fayfayMN.github.io`)*
+🌍 **Live site:** [feifeili.com](https://feifeili.com) *(or `https://feifeili-site `)*
 
 ---
 
@@ -31,3 +31,74 @@ When intuition fails, structure carries the team. That's the lens behind everyth
 ---
 
 ## 📂 What's in This Repo
+.
+├── index.html          → Home
+├── about.html          → About Me (the long version)
+├── projects.html       → Featured work
+├── life.html           → Life & Craft (the human side)
+├── contact.html        → How to reach me
+├── styles.css          → All styling, hand-written
+├── nav.js              → Mobile nav toggle
+└── README.md           → You're here
+No build step. No dependencies. Just HTML, CSS, and a small dash of JavaScript.
+
+---
+
+## 🛠️ Featured Projects
+
+### 🧩 TeamUp
+A Streamlit app I designed and shipped to help student orgs and small teams form balanced project groups by skills, availability, and goals — turning *"who's free?"* into *"who fits?"*
+
+### 🩺 Team Doctor
+A diagnostic Streamlit app that surfaces team-health signals — role clarity, ownership gaps, communication friction — so leaders can fix structure before it breaks people.
+
+### 🏦 Minnesota AGENT.AI — Fraud Detection (🥇 1st Place, State)
+Retail-banking fraud detection system using feature engineering and predictive scoring to identify high-risk anomalies.
+
+### 🔥 HeatMap Hackathon — Burn Care Access (🥇 1st Place, 19 teams)
+Perfect 5.0/5.0 for Innovation & Data Integration. Identified geographic blind spots in burn-care access by synthesizing diverse healthcare datasets.
+
+---
+
+## 🧰 Tech Stack
+
+**Languages:** Python · SQL · R · Java
+**Data & ML:** Pandas · NumPy · Scikit-Learn · Computer Vision
+**AI / LLM:** Prompt Engineering · Local LLMs (Qwen2.5, DeepSeek) · Agentic Workflows
+**Visualization:** Power BI · Tableau · SAP Predictive Analytics · JMP
+**Apps & Dev:** Streamlit · Git · Docker · AWS (EC2, S3) · Jupyter
+**Languages spoken:** English · 中文 (Mandarin)
+
+---
+
+## 🎓 Education
+
+- **B.S. Data Science** (Minor: Applied Statistics) — Metropolitan State University · *Expected Dec 2026* · GPA 4.00 local / 3.91 cumulative
+- **A.S. Computer Science — Transfer Pathway** — North Hennepin Community College · *Dec 2024* · NHCC Scholar · Phi Theta Kappa · GPA 3.93
+- **Certificate — Object-Oriented & Application Programming** — NHCC · *May 2024*
+- **B.S. Political Science** — Hangzhou Normal University, China
+
+---
+
+## 🤝 Currently Engaged
+
+| Program | Role | Window |
+|---|---|---|
+| Metro Analytics Club | Vice President | Apr 2026 – Present |
+| Cargill Mentorship Lab | Inaugural Cohort | Jan – Mar 2026 |
+| TCDSA Innovation Studio | Nonprofit AI Build Cohort | Mar – Jun 2026 |
+| Data Angels Mentorship | Cohort 5 (Mentee) | Jun – Dec 2026 |
+| TRIO Student Support Services | Scholar | Spring 2022 – Present |
+
+---
+
+## 🚀 Running the Site Locally
+
+If you want to clone and explore:
+
+```bash
+git clone https://github.com/fayfayMN/feifeili-site.git
+cd feifeili-site 
+# Open index.html in your browser, or run a quick local server:
+python -m http.server 8000
+# Then visit http://localhost:8000
