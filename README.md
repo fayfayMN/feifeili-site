@@ -15,7 +15,7 @@ This repository hosts my personal website — a hand-coded portfolio built from 
 
 ## 👋 About Me
 
-I've spent twenty years learning how people communicate under pressure — in Zhejiang classrooms, American hospital rooms, and Minnesota mail routes at −20°F. Now I build data and AI tools — like **TeamUp** and **Team Doctor** — for the same thing: **clarity when it matters.**
+I've spent years learning how people communicate under pressure — in Zhejiang classrooms, American hospital rooms, and Minnesota mail routes at −20°F. Now I build data and AI tools — like **TeamUp** and **Team Doctor** — for the same thing: **clarity when it matters.**
 
 When intuition fails, structure carries the team. That's the lens behind everything I build.
 
