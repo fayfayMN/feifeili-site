@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience &mdash; Feifei Li</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .exp-hero {
+      max-width: 1600px; margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 5vw, 6rem) 2rem;
+    }
+    .about-block {
+      max-width: 820px;
+      font-size: clamp(15px, 1.1vw, 18px);
+      color: #444; line-height: 1.85;
+      margin-top: 1.5rem;
+    }
+    .exp-section {
+      max-width: 1600px; margin: 0 auto;
+      padding: clamp(2rem, 3vw, 3rem) clamp(2rem, 5vw, 6rem);
+    }
+    .exp-card {
+      background: #fff; border: 1px solid #eee;
+      border-radius: 14px; padding: clamp(1.5rem, 2vw, 2rem);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .exp-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 1.2vw, 1.25rem);
+      font-weight: 700; color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .exp-org {
+      font-size: clamp(13px, 0.95vw, 15px);
+      color: #C8501A; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .exp-date {
+      font-size: clamp(12px, 0.85vw, 14px);
+      color: #888; margin-bottom: 0.75rem;
+    }
+    .exp-desc {
+      font-size: clamp(13px, 0.95vw, 15px);
+      color: #555; line-height: 1.7;
+    }
+    .mentorship-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .mentorship-item {
+      background: #fff; border: 1px solid #eee;
+      border-radius: 12px; padding: clamp(1rem, 1.5vw, 1.5rem);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .mentorship-item .m-name {
+      font-weight: 700; font-size: clamp(13px, 1vw, 15px);
+      color: #1a1a1a; margin-bottom: 3px;
+    }
+    .mentorship-item .m-detail {
+      font-size: clamp(12px, 0.85vw, 13px);
+      color: #888;
+    }
+    .skills-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .skills-table tr:not(:last-child) td {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .skills-table td {
+      padding: clamp(10px, 1vw, 14px) clamp(14px, 1.5vw, 20px);
+      font-size: clamp(13px, 0.95vw, 15px);
+      vertical-align: top;
+    }
+    .skills-table td:first-child {
+      font-weight: 700; color: #C8501A;
+      white-space: nowrap; width: 140px;
+    }
+    .skills-table td:last-child {
+      color: #444;
+    }
+    .in-progress-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .ip-card {
+      background: #fff; border: 1px solid #eee;
+      border-radius: 12px; padding: clamp(1rem, 1.5vw, 1.5rem);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .ip-card .ip-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #C8501A; margin-bottom: 6px;
+    }
+    .ip-card .ip-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.95rem, 1vw, 1.1rem);
+      font-weight: 700; color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .ip-card .ip-desc {
+      font-size: clamp(12px, 0.85vw, 14px);
+      color: #888;
+    }
+    @media (max-width: 768px) {
+      .mentorship-grid { grid-template-columns: 1fr; }
+      .in-progress-grid { grid-template-columns: 1fr; }
+      .skills-table td:first-child { width: auto; }
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .exp-card.clickable { cursor: pointer; }
+    .exp-card.clickable:hover .view-details { opacity: 1; }
+    .exp-badge {
+      display: inline-block; background: #FFF3ED; color: #C8501A;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 10px;
+      border-radius: 12px; margin-bottom: 8px;
+    }
+    .view-details {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.8rem; font-weight: 700;
+      color: #C8501A; opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .exp-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.6);
+      justify-content: center; align-items: center;
+    }
+    .exp-modal-overlay.open { display: flex; }
+    .exp-modal {
+      background: #fff; border-radius: 16px;
+      max-width: 560px; width: 92%; max-height: 85vh;
+      overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .exp-modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: #f0f0ee; border: none; width: 32px; height: 32px;
+      border-radius: 50%; font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .exp-modal-close:hover { background: #e0e0de; }
+    .exp-modal-header {
+      padding: 2rem 2rem 1rem; border-bottom: 1px solid #eee;
+    }
+    .exp-modal-header .badge {
+      display: inline-block; background: #FFF3ED; color: #C8501A;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 12px;
+      margin-bottom: 0.5rem;
+    }
+    .exp-modal-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem); margin: 0.5rem 0 0.25rem;
+    }
+    .exp-modal-header p { color: #888; font-size: 0.9em; }
+    .exp-modal-body { padding: 1.5rem 2rem 2rem; }
+    .exp-modal-detail {
+      font-size: clamp(13px, 0.95vw, 15px); color: #555;
+      line-height: 1.7; margin-bottom: 1rem;
+    }
+    .exp-modal-stats {
+      display: flex; gap: 1rem; margin: 1.5rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+    .exp-modal-stat {
+      flex: 1; min-width: 80px; text-align: center;
+      background: #f9f9f7; border-radius: 10px; padding: 0.75rem;
+    }
+    .exp-modal-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: #C8501A;
+    }
+    .exp-modal-stat .lbl {
+      font-size: 0.75rem; color: #888; text-transform: uppercase;
+      letter-spacing: 0.5px; margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Feifei Li <em>(say: Fayfay)</em></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ ABOUT ═══ -->
+  <div class="exp-hero">
+    <div class="section-label">ABOUT</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,2.5vw,3rem); color:#1a1a1a;">Feifei Li</h2>
+    <div class="about-block">
+      Bilingual (Mandarin/English) data scientist who pivoted from political science to
+      computer science to data science &mdash; starting with Google certificates while working
+      as a USPS letter carrier, then earning an A.S. in Computer Science (Honors, 3.93
+      GPA) and now finishing a B.S. in Data Science (4.0 at Metropolitan State, Dec 2026).
+      Two-time 1st Place competition winner. Six shipped applications. VP to President
+      in three months. Background in medical interpretation gives me a rare ability to
+      bridge technical work with human context &mdash; whether it&rsquo;s healthcare data, team
+      diagnostics, or community analytics.
+    </div>
+  </div>
+
+  <!-- ═══ PROFESSIONAL EXPERIENCE ═══ -->
+  <div class="exp-section">
+    <div class="section-label">PROFESSIONAL EXPERIENCE</div>
+    <div class="exp-grid">
+
+      <div class="exp-card clickable" onclick="openExpModal('mac')">
+        <div class="exp-badge">Executive Leadership</div>
+        <div class="exp-role">President &amp; Former VP</div>
+        <div class="exp-org">Metro Analytics Club &middot; Metropolitan State University</div>
+        <div class="exp-date">Apr 2026 &ndash; Present</div>
+        <div class="exp-desc">Directing club strategy, member project pipelines, governance, and partnerships.</div>
+        <span class="view-details">Click for Full Scope &rarr;</span>
+      </div>
+
+      <div class="exp-card clickable" onclick="openExpModal('datasci')">
+        <div class="exp-badge">Applied AI &amp; Analytics</div>
+        <div class="exp-role">Data Scientist &amp; AI Developer</div>
+        <div class="exp-org">Metropolitan State University</div>
+        <div class="exp-date">2023 &ndash; Present</div>
+        <div class="exp-desc">Building agentic AI applications, local LLM architectures, and data pipelines in Python, SQL, and Power BI.</div>
+        <span class="view-details">Click for Full Scope &rarr;</span>
+      </div>
+
+      <div class="exp-card clickable" onclick="openExpModal('community')">
+        <div class="exp-badge">Community &amp; Event Volunteer</div>
+        <div class="exp-role">Community &amp; Event Volunteer</div>
+        <div class="exp-org">MinneAnalytics &middot; Minnesota Tech for Success</div>
+        <div class="exp-date">2024 &ndash; Present</div>
+        <div class="exp-desc">Conference room host for MinneAnalytics &amp; Applied AI 2025. Hardware volunteer at Minnesota Tech for Success.</div>
+        <span class="view-details">Click for Full Scope &rarr;</span>
+      </div>
+
+      <div class="exp-card clickable" onclick="openExpModal('interpreter')">
+        <div class="exp-badge">Contract / Freelance</div>
+        <div class="exp-role">Freelance Mandarin Interpreter</div>
+        <div class="exp-org">Minnesota Healthcare &amp; Educational Agencies</div>
+        <div class="exp-date">2023 &ndash; Present</div>
+        <div class="exp-desc">Professional consecutive interpretation across medical, educational, and business environments.</div>
+        <span class="view-details">Click for Full Scope &rarr;</span>
+      </div>
+
+      <div class="exp-card clickable" onclick="openExpModal('usps')">
+        <div class="exp-badge">Logistics &amp; Operations</div>
+        <div class="exp-role">City Carrier</div>
+        <div class="exp-org">United States Postal Service (USPS)</div>
+        <div class="exp-date">2015 &ndash; 2022</div>
+        <div class="exp-desc">Managed daily logistics for 400+ delivery units with 99.9% accuracy over 7 years of service.</div>
+        <span class="view-details">Click for Full Scope &rarr;</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MENTORSHIP & PROGRAMS ═══ -->
+  <div class="exp-section">
+    <div class="section-label">MENTORSHIP &amp; PROGRAMS</div>
+    <div class="mentorship-grid">
+      <div class="mentorship-item">
+        <div class="m-name">TCDSA Innovation Studio &mdash; Nonprofit AI Cohort</div>
+        <div class="m-detail">March &ndash; June 2026</div>
+      </div>
+      <div class="mentorship-item">
+        <div class="m-name">Cargill Mentorship Lab &mdash; Inaugural Cohort</div>
+        <div class="m-detail">January &ndash; March 2026</div>
+      </div>
+      <div class="mentorship-item">
+        <div class="m-name">Data Angels Mentorship &mdash; Cohort 5</div>
+        <div class="m-detail">June &ndash; December 2026</div>
+      </div>
+      <div class="mentorship-item">
+        <div class="m-name">TRIO Student Support Services Scholar</div>
+        <div class="m-detail">2022 &ndash; Present</div>
+      </div>
+      <div class="mentorship-item">
+        <div class="m-name">Be Bold, Break the Mold Mentorship Program</div>
+        <div class="m-detail">Metropolitan State University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SKILLS & TOOLS ═══ -->
+  <div class="exp-section">
+    <div class="section-label">SKILLS &amp; TOOLS</div>
+    <table class="skills-table">
+      <tr><td>Languages</td><td>Python (Pandas, NumPy, Scikit-Learn) &middot; Java &middot; R &middot; SQL &middot; JavaScript &middot; HTML/CSS</td></tr>
+      <tr><td>Data &amp; AI</td><td>Computer Vision &middot; Prompt Engineering &middot; Agentic Workflows &middot; Feature Engineering</td></tr>
+      <tr><td>Analytics</td><td>Power BI &middot; Tableau &middot; SAP Predictive Analytics &middot; JMP &middot; Advanced Excel &middot; SPSS</td></tr>
+      <tr><td>Cloud &amp; Data</td><td>Snowflake &middot; Databricks &middot; AWS (EC2, S3) &middot; Docker</td></tr>
+      <tr><td>Frameworks</td><td>Streamlit &middot; Flask &middot; Jupyter Notebook</td></tr>
+      <tr><td>DevOps</td><td>Git &middot; GitHub &middot; Jira</td></tr>
+      <tr><td>Specialties</td><td>Predictive Modeling &middot; Data Visualization &middot; Team Diagnostics &middot; Bilingual (Mandarin/English)</td></tr>
+    </table>
+  </div>
+
+  <!-- ═══ IN PROGRESS ═══ -->
+  <div class="exp-section">
+    <div class="section-label">IN PROGRESS</div>
+    <div class="in-progress-grid">
+      <div class="ip-card">
+        <div class="ip-label">CURRENT</div>
+        <div class="ip-name">Herbal App</div>
+        <div class="ip-desc">Learning Notion for project management while building a herbal wellness app together with Claude.</div>
+      </div>
+      <div class="ip-card">
+        <div class="ip-label">ACTIVE</div>
+        <div class="ip-name">JiuZuoShu (&#20037;&#22352;&#33298;)</div>
+        <div class="ip-desc">TCM self-care Streamlit app for desk workers &mdash; 9-constitution quiz + daily routines.</div>
+      </div>
+      <div class="ip-card">
+        <div class="ip-label">LEARNING</div>
+        <div class="ip-name">Snowflake &amp; Databricks</div>
+        <div class="ip-desc">Expanding cloud data platform skills for enterprise-scale analytics.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <span class="brand">Feifei Li</span>
+    <div class="footer-links">
+      <a href="https://github.com/fayfayMN" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/feifeili-ds" target="_blank">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+      <a href="life.html">Life &amp; Craft</a>
+    </div>
+    <span class="tag-line">Data Science &middot; Community Impact &middot; Minneapolis, MN</span>
+  </footer>
+
+
+  <!-- ═══ EXPERIENCE MODALS ═══ -->
+  <div class="exp-modal-overlay" id="exp-modal-mac" onclick="if(event.target===this)closeExpModal()">
+    <div class="exp-modal">
+      <button class="exp-modal-close" onclick="closeExpModal()">&#10005;</button>
+      <div class="exp-modal-header">
+        <div class="badge">Executive Leadership</div>
+        <h2>President &amp; Former VP</h2>
+        <p>Metro Analytics Club &middot; Apr 2026 &ndash; Present</p>
+      </div>
+      <div class="exp-modal-body">
+        <p class="exp-modal-detail">Lead organizational strategy, institutional partnerships, and member technical development at Metropolitan State University&rsquo;s data analytics student organization. Built custom internal documentation systems to track member learning pathways and project deliverables.</p>
+        <p class="exp-modal-detail">As VP (Apr&ndash;Jul 2026), built session roadmaps, RACI frameworks, and operational workflows. Promoted to President in July 2026 to direct club-wide strategy and community programming.</p>
+        <div class="exp-modal-stats">
+          <div class="exp-modal-stat"><div class="num">President</div><div class="lbl">Current Role</div></div>
+          <div class="exp-modal-stat"><div class="num">Strategy</div><div class="lbl">Scope</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-modal-overlay" id="exp-modal-datasci" onclick="if(event.target===this)closeExpModal()">
+    <div class="exp-modal">
+      <button class="exp-modal-close" onclick="closeExpModal()">&#10005;</button>
+      <div class="exp-modal-header">
+        <div class="badge">Applied AI &amp; Analytics</div>
+        <h2>Data Scientist &amp; AI Developer</h2>
+        <p>Metropolitan State University &middot; 2023 &ndash; Present</p>
+      </div>
+      <div class="exp-modal-body">
+        <p class="exp-modal-detail">Design and deploy agentic AI platforms, computer vision applications, and data pipelines using Python, SQL, Streamlit, and Power BI. Two-time 1st Place competition winner &mdash; AGENT.AI (retail banking fraud detection, #1 domain) and HeatMap Hackathon (burn care access, 5.0/5.0 innovation).</p>
+        <p class="exp-modal-detail">Shipped 6+ applications from zero to production including TeamUp, Team Doctor, FocusStone, FlowTime, FlowMove, and JiuZuoShu. Built focus &amp; productivity tools as pure HTML/CSS/JS without AI.</p>
+        <div class="exp-modal-stats">
+          <div class="exp-modal-stat"><div class="num">6+</div><div class="lbl">Apps Shipped</div></div>
+          <div class="exp-modal-stat"><div class="num">2&times;</div><div class="lbl">1st Place Wins</div></div>
+          <div class="exp-modal-stat"><div class="num">4.0</div><div class="lbl">GPA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-modal-overlay" id="exp-modal-community" onclick="if(event.target===this)closeExpModal()">
+    <div class="exp-modal">
+      <button class="exp-modal-close" onclick="closeExpModal()">&#10005;</button>
+      <div class="exp-modal-header">
+        <div class="badge">Community &amp; Event Volunteer</div>
+        <h2>Community &amp; Event Volunteer</h2>
+        <p>MinneAnalytics &amp; Minnesota Tech for Success &middot; 2024 &ndash; Present</p>
+      </div>
+      <div class="exp-modal-body">
+        <p class="exp-modal-detail"><strong>Event Operations:</strong> Served as a Conference Room Host for MinneAnalytics and Applied AI 2025, coordinating session schedules, supporting speakers, and assisting attendees.</p>
+        <p class="exp-modal-detail"><strong>Hardware Support:</strong> Dedicated several months as a volunteer at Minnesota Tech for Success, cleaning, sorting, and exchanging computer and laptop hardware for youth technology initiatives.</p>
+        <div class="exp-modal-stats">
+          <div class="exp-modal-stat"><div class="num">2024+</div><div class="lbl">Active Since</div></div>
+          <div class="exp-modal-stat"><div class="num">Events</div><div class="lbl">Operations</div></div>
+          <div class="exp-modal-stat"><div class="num">Hardware</div><div class="lbl">Support</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-modal-overlay" id="exp-modal-interpreter" onclick="if(event.target===this)closeExpModal()">
+    <div class="exp-modal">
+      <button class="exp-modal-close" onclick="closeExpModal()">&#10005;</button>
+      <div class="exp-modal-header">
+        <div class="badge">Contract / Freelance</div>
+        <h2>Freelance Mandarin Interpreter</h2>
+        <p>Minnesota Healthcare &amp; Educational Agencies &middot; 2023 &ndash; Present</p>
+      </div>
+      <div class="exp-modal-body">
+        <p class="exp-modal-detail">Provide high-accuracy Mandarin-English interpretation for clients across clinical, educational, and corporate settings. Listed on the official Minnesota Department of Health Spoken Language Health Care Interpreter Roster.</p>
+        <p class="exp-modal-detail">Ensure strict confidentiality, cultural awareness, and clear cross-language communication under high-stakes medical and educational environments.</p>
+        <div class="exp-modal-stats">
+          <div class="exp-modal-stat"><div class="num">MDH</div><div class="lbl">Roster Status</div></div>
+          <div class="exp-modal-stat"><div class="num">Medical</div><div class="lbl">Focus Area</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-modal-overlay" id="exp-modal-usps" onclick="if(event.target===this)closeExpModal()">
+    <div class="exp-modal">
+      <button class="exp-modal-close" onclick="closeExpModal()">&#10005;</button>
+      <div class="exp-modal-header">
+        <div class="badge">Logistics &amp; Operations</div>
+        <h2>City Carrier</h2>
+        <p>United States Postal Service (USPS) &middot; 2015 &ndash; 2022</p>
+      </div>
+      <div class="exp-modal-body">
+        <p class="exp-modal-detail">Served over 7 years as a City Carrier managing heavy delivery logistics, time-sensitive distribution routes, and real-time problem solving. Maintained 99.9% accuracy and high customer satisfaction under strict daily operational deadlines across 400+ delivery units.</p>
+        <p class="exp-modal-detail">Seven years of Minnesota winters building resilience and ground-truth operational knowledge &mdash; the same mindset that drives building data products today.</p>
+        <div class="exp-modal-stats">
+          <div class="exp-modal-stat"><div class="num">7+</div><div class="lbl">Years</div></div>
+          <div class="exp-modal-stat"><div class="num">400+</div><div class="lbl">Daily Units</div></div>
+          <div class="exp-modal-stat"><div class="num">99.9%</div><div class="lbl">Accuracy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openExpModal(id) {
+      document.getElementById('exp-modal-' + id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeExpModal() {
+      document.querySelectorAll('.exp-modal-overlay').forEach(function(m) {
+        m.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeExpModal();
+    });
+  </script>
+
+  <script src="site.js"></script>
+</body>
+</html>
